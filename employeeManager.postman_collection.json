@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "ee81e67d-e9ea-44fb-b5f4-c143153c580d",
+		"name": "employeeManager ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8463932"
+	},
+	"item": [
+		{
+			"name": "https://peaceful-inlet-88854.herokuapp.com/api/employees",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Oscar Martinez\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://peaceful-inlet-88854.herokuapp.com/api/employees",
+					"protocol": "https",
+					"host": [
+						"peaceful-inlet-88854",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"employees"
+					]
+				},
+				"description": "Get Employees"
+			},
+			"response": []
+		},
+		{
+			"name": "https://peaceful-inlet-88854.herokuapp.com/api/employees",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.have.to.status(200);",
+							"});",
+							"",
+							"pm.test(\"Post has body\", function(){",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"id\": \"78900\",\n\"name\": \"Cal Kestis\",\n\"phone\": \"18002668267\",\n\"email\": \"mantisbd1@gmail.com\",\n\"title\": \"Jedi Knight\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://peaceful-inlet-88854.herokuapp.com/api/employees",
+					"protocol": "https",
+					"host": [
+						"peaceful-inlet-88854",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"employees"
+					]
+				},
+				"description": "Post for creating employee"
+			},
+			"response": []
+		},
+		{
+			"name": "https://peaceful-inlet-88854.herokuapp.com/api/employees/78900?name=Obama Nation&title=CEO OF THE WORLD&phone=1800696969&email=dontemailme@gmail.com",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function(){",
+							"    pm.expect(pm.response.text()).to.include(\"Jedi Master\")",
+							"})",
+							"pm.test(\"Valid and 200 ok\", function(){",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://peaceful-inlet-88854.herokuapp.com/api/employees/78900?name=Cal Kestis&title=Jedi Master&phone=18002668267&email=mantisbd1@gmail.com",
+					"protocol": "https",
+					"host": [
+						"peaceful-inlet-88854",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"employees",
+						"78900"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Cal Kestis"
+						},
+						{
+							"key": "title",
+							"value": "Jedi Master"
+						},
+						{
+							"key": "phone",
+							"value": "18002668267"
+						},
+						{
+							"key": "email",
+							"value": "mantisbd1@gmail.com"
+						},
+						{
+							"key": "id",
+							"value": "78900",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Put for EmployeeManager"
+			},
+			"response": []
+		},
+		{
+			"name": "https://peaceful-inlet-88854.herokuapp.com/api/employees/78900",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Gone, valid, and bringing the right thing\", function(){",
+							"    pm.response.to.not.have.body(\"Cal Kestis\")",
+							"    pm.reponse.to.be.ok;",
+							"    pm.expect(pm.response.text()).to.include(\"Oscar Martinez\")",
+							"})",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://peaceful-inlet-88854.herokuapp.com/api/employees/78900",
+					"protocol": "https",
+					"host": [
+						"peaceful-inlet-88854",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"employees",
+						"78900"
+					]
+				},
+				"description": "Delete for EmployeeManger\n"
+			},
+			"response": []
+		}
+	]
+}
